@@ -40,7 +40,7 @@ public class Main {
 
 
     public static void main(String[] args) {
-        int[][] grid = {  {7, 0, 0, 0, 0, 0, 2, 0, 0},
+        int[][] sudokuGrid = {  {7, 0, 0, 0, 0, 0, 2, 0, 0},
                             {4, 0, 2, 0, 0, 0, 0, 0, 3},
                             {0, 0, 0, 2, 0, 1, 0, 0, 0},
                             {3, 0, 0, 1, 8, 0, 0, 9, 7},
@@ -50,6 +50,9 @@ public class Main {
                             {5, 0, 0, 0, 0, 0, 1, 0, 6},
                             {0, 0, 6, 0, 0, 0, 0, 0, 8}
         };
+
+        boolean safe = isSafe(sudokuGrid, 0, 2, 4);
+        System.out.println("Is the number safe? " + safe);
 
 
     }
