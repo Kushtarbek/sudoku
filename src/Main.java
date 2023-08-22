@@ -4,6 +4,45 @@ public class Main {
 
 
 
+    public static boolean solveSudoku(int [][] grid){
+        int emptyCell = findEmptyCell(grid);
+        if(emptyCell == null){
+            return true;
+        };
+
+        int row = emptyCell[0];
+        int col = emptyCell[1];
+
+        for (int i=0; i<=9; num++) {
+            if(isSafe(grid, row, col, num)){
+                grid[row][col] = num;
+
+                if(solveSudoku(grid)) {
+                    return true;
+                }
+
+                grid[row][col]=0;
+            }
+        }
+        return false; // No valid number found, need to backtrack
+    }
+
+
+    public static int[] findEmptyCell(int [][] grid){
+        int [] emptyCell = new int[2];
+        for(int i = 0; i < 9; i++) {
+            for(int j = 0; j < 9; j++) {
+                if(grid[i][j] == 0){
+                    emptyCell[0] = i;
+                    emptyCell[1] = j;
+                    return emptyCell;
+                }
+            }
+        }
+        return null;
+    }
+
+
     public static boolean isSafe(int [][] grid, int row, int col, int num){
         //check row
         HashMap<Integer, Integer>  rowMap = new HashMap<>();
@@ -38,6 +77,15 @@ public class Main {
         return true; //no duplicate number found in row, column, or box;
     }
 
+    public static void printGrid(int [][] grid){
+        for (int i = 0; i < 9; i++) {
+            for (int j = 0; j < 9; j++) {
+                System.out.println(grid[i][j] + " ");
+            }
+            System.out.println();
+        }
+    }
+
 
     public static void main(String[] args) {
         int[][] sudokuGrid = {  {7, 0, 0, 0, 0, 0, 2, 0, 0},
@@ -53,9 +101,11 @@ public class Main {
 
         boolean safe = isSafe(sudokuGrid, 0, 2, 4);
         System.out.println("Is the number safe? " + safe);
-
-
+        if (solveSudoku(sudokuGrid)) {
+            System.out.println("Sudoku solved:");
+            printGrid(sudokuGrid);
+        } else {
+            System.out.println("No solution exists.");
+        }
     }
-
-
 }
