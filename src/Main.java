@@ -5,7 +5,7 @@ public class Main {
 
 
     public static boolean solveSudoku(int [][] grid){
-        int emptyCell = findEmptyCell(grid);
+        int[] emptyCell = findEmptyCell(grid);
         if(emptyCell == null){
             return true;
         };
@@ -13,7 +13,7 @@ public class Main {
         int row = emptyCell[0];
         int col = emptyCell[1];
 
-        for (int i=0; i<=9; num++) {
+        for (int num=1; num<=9; num++) {
             if(isSafe(grid, row, col, num)){
                 grid[row][col] = num;
 
@@ -80,7 +80,7 @@ public class Main {
     public static void printGrid(int [][] grid){
         for (int i = 0; i < 9; i++) {
             for (int j = 0; j < 9; j++) {
-                System.out.println(grid[i][j] + " ");
+                System.out.print(grid[i][j] + " ");
             }
             System.out.println();
         }
