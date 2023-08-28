@@ -52,6 +52,20 @@ public class Attempt2 {
         System.out.println("Exiting the program.");
     }
 
+    //Check if a number is unique within its subgrid
+    public static boolean isUniqueInSubgrid( int [][] board, int  startRow, int startCol, int num ){
+        for( int row = 0; row < 3; row++ ){
+            for( int col =0; col < 3; col++){
+                if(board[startRow + row][startCol + startCol] == num){
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+
+
+
 
     //Generate a random 9x9 board
     @SuppressFBWarnings("DMI_RANDOM_USED_ONLY_ONCE")
