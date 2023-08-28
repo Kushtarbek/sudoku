@@ -64,7 +64,17 @@ public class Attempt2 {
         return true;
     }
 
-
+    // Check if a number is unique within its row and column
+    public static boolean isUniqueInSubgridRowAndColumn( int [][] board, int startRow, int startCol, int num ){
+        for( int row = 0; row < 3; row++ ){
+            for( int col =0; col < 3; col++){
+                if((board[startRow + row][startCol + col] != 0) && (board[startRow + row][startCol + col] == num)){
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
 
 
     //Generate a random 9x9 board
